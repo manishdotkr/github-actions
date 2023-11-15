@@ -9,6 +9,7 @@ env:
   JOB: PR_MONITOR
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
   REPO_NAME: ${{ github.repository }}
+  WEBHOOK: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
 
 jobs:
   Stale-PR:

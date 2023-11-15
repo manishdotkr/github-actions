@@ -11,6 +11,7 @@ env:
   REPO_NAME: ${{ github.repository }}
   MERGE_PR: ${{ github.event.comment.body == '/Approved' }}
   CLOSE_PR: ${{ github.event.comment.body == '/Close' }}
+  WEBHOOK: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
   
 jobs:
   Merge_and_Close-PR:  

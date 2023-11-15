@@ -145,6 +145,7 @@ def merge_close_pr():
     if merge.__eq__('true'):
         pr.merge(merge_method = 'merge', commit_message = msg.get("approve_merge"))
         pr.create_issue_comment(msg.get("approve_comment"))
+        gChat_notification("merged")
         print(msg.get("approve_comment"))
 
     # Check if the comment "/Close" in the pull request comments
@@ -174,7 +175,8 @@ def gChat_notification(event):
         "opened"   : f"New Pull Request Created by {pr.user.login}:\nTitle: {pr.title}\nURL: {pr.html_url}",
         "edited"   : f"Pull Request Edited by {pr.user.login}:\nTitle: {pr.title}\nURL: {pr.html_url}",
         "closed"   : f"Pull Request Closed by {pr.user.login}:\nTitle: {pr.title}\nURL: {pr.html_url}",
-        "reopened" : f"Pull Request Reopened by {pr.user.login}:\nTitle: {pr.title}\nURL: {pr.html_url}"
+        "reopened" : f"Pull Request Reopened by {pr.user.login}:\nTitle: {pr.title}\nURL: {pr.html_url}",
+        "merged" : f"Pull Request Merged by {pr.user.login}:\nTitle: {pr.title}\nURL: {pr.html_url}"
     }
     message = msgDictionery.get(event , message)
     payload = {

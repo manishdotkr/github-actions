@@ -10,6 +10,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   REPO_NAME: ${{ github.repository }}
   PR_NUMBER: ${{ github.event.pull_request.number }}
+  WEBHOOK: ${{ secrets.GOOGLE_CHAT_WEBHOOK }}
  
 jobs:
   Do-not-merge:
