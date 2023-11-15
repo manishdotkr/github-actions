@@ -31,8 +31,8 @@ pr = repo.get_pull(prNumber) if(prNumber) else None
 
 def main():
     # running jobs
-    if not pr and job in ['PR_CHECKER' , 'FILE_CHECKER' , 'TAG_MATCHER' , 'MERGE_CLOSE' , 'DO_NOT_MERGE' ]:
-        raise ValueError("Please provide a Valid PR Number")
+    if (not pr and job in ['PR_CHECKER' , 'FILE_CHECKER' , 'TAG_MATCHER' , 'MERGE_CLOSE' , 'DO_NOT_MERGE' , 'GCHAT' ]):
+        raise ValueError(f"Please provide a Valid PR Number. pr:{pr} AND job:{job}")
     
     if job == "PR_MONITOR":
         pr_monitor()
