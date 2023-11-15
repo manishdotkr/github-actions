@@ -15,8 +15,6 @@ msg = load_config('msg.yaml')
 
 # env variables
 job = os.getenv("JOB") if(os.getenv("JOB")) else None
-# if not job:
-#     raise ValueError(f"JOB name must be provided")
 githubToken = os.getenv("GITHUB_TOKEN") if(os.getenv("GITHUB_TOKEN")) else None
 repoName = os.getenv('REPO_NAME') if(os.getenv('REPO_NAME')) else None
 prNumber = int(os.getenv('PR_NUMBER')) if ( os.getenv('PR_NUMBER') ) else None
