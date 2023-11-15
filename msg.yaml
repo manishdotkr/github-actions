@@ -1,0 +1,25 @@
+# stale PR which are older than 15 days 
+stale_label : 'This PR is stale because it has been open 15 days with no activity. Remove stale label or comment/update PR otherwise this will be closed in next 2 days.' 
+# close staled PR if 2 days of no activity
+staled_PR_closing : 'This PR was closed because it has been stalled for 2 days with no activity.' \
+
+# Check if the pull request targets the master branch directly
+check_PR_target : 'Do not accept PR target from feature branch to master branch.' 
+
+# Check if the pull request has a description
+check_description : 'No Description on PR body. Please add valid description.' 
+
+# Check if the Approved comment in the pull request comments
+approve_merge : 'Pull Request Approved and Merged!'
+approve_merge_comment : 'This pull request was approved and merged because of a slash command.'
+# 5_2 Check if the Close comment in the pull request comments
+closing_comment : 'This pull request was closed because of a slash command.'
+# 6. Check All the files and see if there is a file named "VERSION"
+check_version_file : 'The VERSION file exists. All ohk'
+version_file_inexistence : "The VERSION file does not exist. Closing this pull request."
+# 7. Check if version name from "VERSION" already exists as tag  
+tagcheck_success : "The VERSION didnt matched with tag. All ok"
+tagcheck_reject : "The tag from VERSION file already exists. Please update the VERSION file."
+# 8. Close the PR having DO NOT MERGE LABEL
+label : "Please remove DO NOT MERGE LABEL"
+# 9. message need to be placed here
