@@ -166,7 +166,6 @@ def do_not_merge():
 
 def gChat_notification(event):
     # Google chat integration with github
-    event = event if event else 
     gChatWebhookUrl = os.getenv('WEBHOOK')
     assert event , "Please provide a valid event"
     assert gChatWebhookUrl , "Please provide a valid google chat webhook URL"
