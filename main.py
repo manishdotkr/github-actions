@@ -81,7 +81,7 @@ def pr_monitor():
 def file_checker():
     # Check All the files and see if there is a file named "VERSION"
     print("---------------running file_checker---------------")
-    fileName = os.getenv("VERSION_FILE")
+    fileName = os.getenv("FILE_NAME")
     assert fileName , "Must Provide a File Name for running the file_checker job"
     files = pr.get_files()
     version_file_exist = False
