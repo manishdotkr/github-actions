@@ -62,12 +62,15 @@ def pr_monitor():
     allPullRequests = repo.get_pulls(state='open')
 
     for pr in allPullRequests:
+        print(f"Checking PR:{pr.title} is Stale or not")
         time_diff = now - pr.updated_at
         # 1. Check if the time difference is greater than the stale_days
         if time_diff > timedelta(days=stale_days):
             print(f"Marking Pull request: {pr.number} as stale!")
             pr.create_issue_comment( msg.get("stale_label") )
             pr.add_to_labels('Stale')
+        else:
+            print(f"Pull request: {pr.number} is not Stale!")
 
         # 2. Close staled PR if 2 days of no activity and if it has the label 'Stale'
         if "Stale" in [label.name for label in pr.labels] and time_diff > timedelta(days=stale_close_days):
