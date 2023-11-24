@@ -56,13 +56,11 @@ def pr_monitor():
     # Makring all the PRs on the repo as stale if they are not active for the last 15 days.
     print("---------------running pr_monitor---------------")
     #local variables
-    # now = datetime.now()
     now = datetime.now(timezone.utc)
     stale_days = 15;
     stale_close_days = 2;
     allPullRequests = repo.get_pulls(state='open')
-    print(f"DateTime Now: {now}")
-    print(f"DateTime Now in Int: {int(now.timestamp())}")
+
     for pr in allPullRequests:
         time_diff = now - pr.updated_at
         # 1. Check if the time difference is greater than the stale_days
