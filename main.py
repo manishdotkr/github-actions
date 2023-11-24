@@ -61,7 +61,8 @@ def pr_monitor():
     stale_days = 15;
     stale_close_days = 2;
     allPullRequests = repo.get_pulls(state='open')
-
+    print(f"DateTime Now: {now}")
+    print(f"DateTime Now in Int: {int(now.timestamp())}")
     for pr in allPullRequests:
         time_diff = now - pr.updated_at
         # 1. Check if the time difference is greater than the stale_days
