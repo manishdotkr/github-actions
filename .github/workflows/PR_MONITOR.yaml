@@ -1,7 +1,8 @@
 name: Stale Pull Requests
 on:
-  schedule:
-    - cron: '0 09 * * *' # scheduler runs every day at 9:00am UTC
+  push:
+  # schedule:
+  #   - cron: '0 09 * * *' # scheduler runs every day at 9:00am UTC
 
 permissions: write-all
 
