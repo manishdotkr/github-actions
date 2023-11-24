@@ -1,6 +1,6 @@
 import os
 from github import Github
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta , timezone
 import yaml
 import requests
 
@@ -56,7 +56,8 @@ def pr_monitor():
     # Makring all the PRs on the repo as stale if they are not active for the last 15 days.
     print("---------------running pr_monitor---------------")
     #local variables
-    now = datetime.now()
+    # now = datetime.now()
+    now = datetime.now(timezone.utc)
     stale_days = 15;
     stale_close_days = 2;
     allPullRequests = repo.get_pulls(state='open')
