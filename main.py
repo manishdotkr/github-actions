@@ -47,7 +47,7 @@ def main():
     elif job == "DO_NOT_MERGE":
         do_not_merge()
     elif job == "GCHAT":
-        gChat_notification(os.getenv('EVENT'))
+        gChat_notification(os.getenv('EVENT') , pr)
     else:
         raise ValueError("Please provide Valid JOB Name")
     
@@ -79,7 +79,7 @@ def pr_monitor():
             print(msg.get("staled_PR_closing"))
             pr.edit(state="closed")
             pr.create_issue_comment(msg.get("staled_PR_closing") )  
-            gChat_notification("closed")
+            gChat_notification("closed" , pr)
    
 def file_checker():
     # Check All the files and see if there is a file named "VERSION"
@@ -99,7 +99,7 @@ def file_checker():
         print(msg.get("version_file_inexistence"))
         pr.edit(state='closed')
         pr.create_issue_comment(msg.get("version_file_inexistence") )
-        gChat_notification("closed")
+        gChat_notification("closed" , pr)
 
 def tag_matcher():
     # Check if version name from "VERSION" already exists as tag  
@@ -120,7 +120,7 @@ def tag_matcher():
         print(msg.get("tagcheck_reject") )
         pr.edit(state='closed')
         pr.create_issue_comment(msg.get("tagcheck_reject") )
-        gChat_notification("closed")
+        gChat_notification("closed" , pr)
 
 def pr_checker():
     # Check if the pull request targets the master branch directly and not comming from release branch
@@ -129,14 +129,14 @@ def pr_checker():
         print(msg.get("check_PR_target"))
         pr.edit(state='closed')
         pr.create_issue_comment(msg.get("check_PR_target") )
-        gChat_notification("closed")
+        gChat_notification("closed" , pr)
     # Check if the pull request has a description
     if not pr.body:
         print(f"Pull request: {pr.number} has no description" )
         print(msg.get("check_description"))
         pr.edit(state='closed')
         pr.create_issue_comment(msg.get("check_description"))
-        gChat_notification("closed")
+        gChat_notification("closed" , pr)
         
 def merge_close_pr():
     merge = os.getenv("MERGE_PR")
@@ -148,7 +148,7 @@ def merge_close_pr():
     if merge.__eq__('true'):
         pr.merge(merge_method = 'merge', commit_message = msg.get("approve_merge"))
         pr.create_issue_comment(msg.get("approve_comment"))
-        gChat_notification("merged")
+        gChat_notification("merged" , pr)
         print(msg.get("approve_comment"))
 
     # Check if the comment "/Close" in the pull request comments
@@ -156,7 +156,7 @@ def merge_close_pr():
         print(msg.get("closing_comment"))
         pr.edit(state="closed")
         pr.create_issue_comment(msg.get("closing_comment"))
-        gChat_notification("closed")
+        gChat_notification("closed" , pr)
 
 def do_not_merge():
     labels = pr.get_labels()
@@ -164,9 +164,9 @@ def do_not_merge():
         print(msg.get("label"))    
         pr.edit(state='closed')
         pr.create_issue_comment(msg.get("label"))
-        gChat_notification("closed")
+        gChat_notification("closed" , pr)
 
-def gChat_notification(event):
+def gChat_notification(event , pr):
     # Google chat integration with github
     print("---------------running gChat_notification---------------")
     gChatWebhookUrl = os.getenv('WEBHOOK')
