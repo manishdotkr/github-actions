@@ -63,7 +63,9 @@ def pr_monitor():
 
     if not allPullRequests:
         print(f"There is no Open Pull request to Monitor")
-        
+    else:
+        print(f"There is these Pull request to Monitor -> {allPullRequests.__name__}")
+
     for pr in allPullRequests:
         print(f"Checking PR:{pr.title} is Stale or not")
         time_diff = now - pr.updated_at
