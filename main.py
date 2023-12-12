@@ -61,6 +61,9 @@ def pr_monitor():
     stale_close_days = 2;
     allPullRequests = repo.get_pulls(state='open')
 
+    if not allPullRequests:
+        print(f"There is no Open Pull request to Monitor")
+        
     for pr in allPullRequests:
         print(f"Checking PR:{pr.title} is Stale or not")
         time_diff = now - pr.updated_at
