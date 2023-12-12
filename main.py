@@ -62,7 +62,9 @@ def pr_monitor():
     allPullRequests = repo.get_pulls(state='open')
 
     if allPullRequests.totalCount == 0:
+        print("---------------------------------------------")
         print(f"There is no Open Pull request to Monitor")
+        print("---------------------------------------------")
     
     for pr in allPullRequests:
         print(f"Checking PR:{pr.title} is Stale or not")
