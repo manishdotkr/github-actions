@@ -1,4 +1,4 @@
-name: Make PR Draft when it has a label named DO_NOT_MERGE
+name: 'PR having DO_NOT_MERGE Label should Be converted as DRAFT PR'
 
 on:
   push:
@@ -21,4 +21,7 @@ jobs:
         
       - name: make pr draft
         uses: officialmanishkr98/github-actions/actions/pr_draft@main
- 
+
+
+# README -> secrets.GITHUB_TOKEN doesn't work as it doesn't has necessary permissions. So create a PAT 
+#           with necessary permissions and use it instead
