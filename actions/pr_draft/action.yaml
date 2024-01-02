@@ -12,7 +12,5 @@ runs:
   steps:
     - name: making pr as draft
       run: |
-        echo running pr draft script
-        gh pr view 4
         bash ./scripts/draft.sh
       shell: bash

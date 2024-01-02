@@ -1,4 +1,4 @@
-name: Make PR Draft
+name: Make PR Draft when it has a label named DO_NOT_MERGE
 
 on:
   push:
@@ -19,27 +19,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         
-      # - name: make pr draft
-      #   uses: officialmanishkr98/github-actions/actions/pr_draft@main
-      - name: Run draft.sh script
-        run: |
-          gh pr view 4
-          
-          id=$(gh pr view $1 --json id -q '.id')
-
-          MUTATION='
-            mutation($id: ID!) {
-              convertPullRequestToDraft(input: { pullRequestId: $id }) {
-                pullRequest {
-                  id
-                  number
-                  isDraft
-                }
-              }
-            }'
-          
-          gh api graphql -F id="${id}" -f query="${MUTATION}" >/dev/null
-
-        shell: bash
-
-        
+      - name: make pr draft
+        uses: officialmanishkr98/github-actions/actions/pr_draft@main
+ 
