@@ -1,15 +1,12 @@
 name: 'PR having DO_NOT_MERGE Label should Be converted as DRAFT PR'
 
 on:
-  push:
-  # pull_request:
-  #   types: [closed]
-  #   branches:
-  #     - master
+  pull_request:
+    types: [opened, edited, reopened, labeled]
 
 env:
   GITHUB_TOKEN: ${{ secrets.PAT }}
-  PR_NUMBER: 4
+  PR_NUMBER: ${{ github.event.pull_request.number }}
 
 jobs:
   make_pr_draft:
