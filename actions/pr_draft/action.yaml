@@ -16,5 +16,10 @@ runs:
     - name: making pr as draft 
       run: |
         echo $PR_NUMBER
-        bash ./scripts/draft.sh $PR_NUMBER
+        if [[ "$LABEL" == "true" ]]; then
+          echo This PR has a Label named DO_NOT_MERGE. Converting it into DRAFT PR
+          bash ./scripts/draft.sh $PR_NUMBER
+        else
+          echo This PR doesn't has a Label named DO_NOT_MERGE.
+        fi
       shell: bash
