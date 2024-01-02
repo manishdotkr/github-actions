@@ -1,4 +1,4 @@
-name: Create Tag on Merge to master
+name: Make PR Draft
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   #     - master
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.PAT }}
   PR_NUMBER: 4
 
 jobs:
