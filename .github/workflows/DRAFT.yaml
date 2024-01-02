@@ -19,6 +19,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: Create tag
+      - name: make pr draft
         uses: officialmanishkr98/github-actions/actions/pr_draft@main
         
