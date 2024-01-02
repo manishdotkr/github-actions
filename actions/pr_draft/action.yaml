@@ -1,0 +1,16 @@
+name: "Main action file to create tag"
+
+description: "composite actions"
+
+inputs:
+  GITHUB_TOKEN:
+    description: "Token used to access repo"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: making pr as draft
+      run: |
+        bash ./scripts/draft.sh
+      shell: bash

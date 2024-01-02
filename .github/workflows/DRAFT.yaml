@@ -1,0 +1,24 @@
+name: Create Tag on Merge to master
+
+on:
+  push:
+  # pull_request:
+  #   types: [closed]
+  #   branches:
+  #     - master
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PR_NUMBER: 4
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Create tag
+        uses: officialmanishkr98/github-actions/actions/pr_draft@master
+        
