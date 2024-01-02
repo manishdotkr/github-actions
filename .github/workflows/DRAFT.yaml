@@ -19,6 +19,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: make pr draft
-        uses: officialmanishkr98/github-actions/actions/pr_draft@main
+      # - name: make pr draft
+      #   uses: officialmanishkr98/github-actions/actions/pr_draft@main
+      - name: Run draft.sh script
+        run: |
+          gh pr view 4
+          bash ./scripts/draft.sh 4
+        shell: bash
+
         
