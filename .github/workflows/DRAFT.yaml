@@ -12,7 +12,7 @@ env:
   PR_NUMBER: 4
 
 jobs:
-  create-tag:
+  make_pr_draft:
     runs-on: ubuntu-latest
     
     steps: 

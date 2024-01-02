@@ -12,5 +12,6 @@ runs:
   steps:
     - name: making pr as draft
       run: |
+        echo running pr draft script
         bash ./scripts/draft.sh
       shell: bash
