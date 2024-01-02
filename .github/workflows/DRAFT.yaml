@@ -20,5 +20,5 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Create tag
-        uses: officialmanishkr98/github-actions/actions/pr_draft@master
+        uses: officialmanishkr98/github-actions/actions/pr_draft@main
         
